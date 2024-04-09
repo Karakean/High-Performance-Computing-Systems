@@ -1,0 +1,5 @@
+main: main.c
+	mpicc main.c -o main.out
+ 
+run:
+	mpirun -np $(cores) ./main.out ${elems}
