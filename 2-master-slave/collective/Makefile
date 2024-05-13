@@ -11,10 +11,10 @@ endif
 
 
 main: mpi.c
-	${MPICC} ${CFLAGS} $< -o mpi ${LIBS}
+	${MPICC} ${CFLAGS} $< -o mpi.out ${LIBS}
 
 run:
-	mpirun -np 4 ./mpi $(RUN_ARGS)
+	mpirun -np 4 ./mpi.out $(RUN_ARGS)
 
 clean:
-	rm mpi
+	rm mpi.out
