@@ -88,6 +88,7 @@ int main(int argc, char **argv) {
             recvbuf = (unsigned long int*)malloc(numReceived * sizeof(unsigned long int));
             MPI_Recv(recvbuf, numReceived, MPI_UNSIGNED_LONG, 0, status.MPI_TAG, MPI_COMM_WORLD, &status);
             int primecount = 0;
+            #pragma omp parallel for reduction(+:primecount)
             for (int i = 0; i < numReceived; i++) {
                 if (is_prime(recvbuf[i])) {
                     primecount++;
